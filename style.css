@@ -11,6 +11,7 @@
 }
 
 .bookshelf-shelf {
+    height: 135px;
     box-shadow:
         0 0 0 5px rgb(0, 0, 0),
         0 0 0 12px rgb(126, 104, 76),
