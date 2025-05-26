@@ -1,0 +1,18 @@
+.bookshelf-back {
+    width: 300px;
+    height: 600px;
+    background-color: burlywood;
+    box-shadow:
+        0 0 0 20px rgb(126, 104, 76),
+        0 0 0 24px black;       
+    margin: 50px auto;
+    display: grid;
+    gap: 20px;
+}
+
+.bookshelf-shelf {
+    box-shadow:
+        0 0 0 5px rgb(0, 0, 0),
+        0 0 0 12px rgb(126, 104, 76),
+        0 0 0 2px black;  
+}
