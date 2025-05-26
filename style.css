@@ -10,10 +10,38 @@
     gap: 20px;
 }
 
-.bookshelf-shelf {
+.bookshelf-shelf_one {
     height: 135px;
     box-shadow:
         0 0 0 5px rgb(0, 0, 0),
         0 0 0 12px rgb(126, 104, 76),
-        0 0 0 2px black;  
+        0 0 0 2px black; 
+    display: flex;
+}
+
+.bookshelf-shelf_two {
+    height: 135px;
+    box-shadow:
+        0 0 0 5px rgb(0, 0, 0),
+        0 0 0 12px rgb(126, 104, 76),
+        0 0 0 2px black; 
+    display: flex;
+}
+
+.bookshelf-shelf_three {
+    height: 135px;
+    box-shadow:
+        0 0 0 5px rgb(0, 0, 0),
+        0 0 0 12px rgb(126, 104, 76),
+        0 0 0 2px black; 
+    display: flex;
+}
+
+.bookshelf-shelf_four {
+    height: 135px;
+    box-shadow:
+        0 0 0 5px rgb(0, 0, 0),
+        0 0 0 12px rgb(126, 104, 76),
+        0 0 0 2px black; 
+    display: flex;
 }
