@@ -7,11 +7,39 @@
     <link rel="stylesheet" href="style.css"></link>
 </head>
 <body>
-    <div class="bookshelf-back">
-        <div class="bookshelf-shelf_one"></div>
-        <div class="bookshelf-shelf_two"></div>
-        <div class="bookshelf-shelf_three"></div>
-        <div class="bookshelf-shelf_four"></div>
+    <div class="page">
+        <dialog id="dialog">
+            <form id = "form" method="dialog">
+                <p>
+                    <label>
+                        Book title:
+                        <input type="text" id="title" required />
+                    </label>
+                    <label>
+                        Author:
+                        <input type="text" id="author" required />
+                    </label>
+                    <label>
+                        Page number:
+                        <input type="number" id="pages" required />
+                    </label>
+                </p>
+                <div>
+                    <input type="submit" id="enter" value="Enter"/>
+                    <input type="submit" id="close" value="Close"/>
+                </div>
+            </form>
+        </dialog>
+        <div class="buttons">
+            <button id = "add-button" class="add-button">New book</button>
+        </div>
+        <output></output>
+        <div class="bookshelf-back">
+            <div class="bookshelf-shelf_one"></div>
+            <div class="bookshelf-shelf_two"></div>
+            <div class="bookshelf-shelf_three"></div>
+            <div class="bookshelf-shelf_four"></div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

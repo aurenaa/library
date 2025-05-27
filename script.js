@@ -18,10 +18,7 @@ function addBookToLibrary(title, author, pageNum, read) {
 }
 
 addBookToLibrary("The Hobbit", "J.R.R Tolkien", 295, "not read");
-console.log(myLibrary[0].info());
-
 addBookToLibrary("The Last of Us", "Neil Druckman", 2, "not read");
-addBookToLibrary("GTA6", "Rockstar", 10, "read");
 
 const shelfOne = document.querySelector(".bookshelf-shelf_one");
 const shelfTwo = document.querySelector(".bookshelf-shelf_two");
@@ -33,7 +30,7 @@ function displayBook(newBook) {
     let book = document.createElement("div");
     book.setAttribute('data-info', newBook.info());
     book.classList.add("book");
-    
+
     let r = getRandomInt(255);
     let g = getRandomInt(255);
     let b = getRandomInt(255);
@@ -68,3 +65,33 @@ function getRandomInt(max) {
 
 displayBook(myLibrary[0]);
 displayBook(myLibrary[1]);
+
+const addBtn = document.getElementById("add-button");
+const dialog = document.getElementById("dialog");
+const closeBtn = dialog.querySelector("#close");
+
+addBtn.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+closeBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    dialog.close();
+});
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const titleInput = document.getElementById("title");
+    const title = titleInput.value;
+    const authorInput = document.getElementById("author");
+    const author = authorInput.value;
+    const pagesInput = document.getElementById("pages");
+    const pageNum = pagesInput.value;
+
+    addBookToLibrary(title, author, pageNum, "not read");
+    const lastAddedBook = myLibrary[myLibrary.length - 1];
+    displayBook(lastAddedBook);
+
+    dialog.close();
+});
