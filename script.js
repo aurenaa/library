@@ -7,7 +7,7 @@ function Book(id, title, author, pageNum, read) {
     this.pageNum = pageNum;
     this.read = read;
     this.info = function () {
-        return this.id + ", " +this.title + " by " + this.author + ", " + this.pageNum + " pages" + ", " + this.read;
+        return this.title + " by " + this.author + ", " + this.pageNum + " pages" + ", " + this.read;
     }
 }
 
@@ -31,6 +31,9 @@ let bookCounter = 0;
 
 function displayBook(newBook) {
     let book = document.createElement("div");
+    book.setAttribute('data-info', newBook.info());
+    book.classList.add("book");
+    
     let r = getRandomInt(255);
     let g = getRandomInt(255);
     let b = getRandomInt(255);
@@ -40,45 +43,23 @@ function displayBook(newBook) {
     }
 
     if(bookCounter >= 10 && bookCounter < 20) {
-        book.classList.add("book");
-        book.style.width = "30px";
-        book.style.height = "135px";
         book.style.backgroundColor = `rgb(${[r,g,b].join(',')})`;
-        book.style.boxShadow = "0 0 0 2px black";
         shelfTwo.appendChild(book);
-        bookCounter++;
-        return;
     }
     else if(bookCounter >= 20 && bookCounter < 30) {
-        book.classList.add("book");
-        book.style.width = "30px";
-        book.style.height = "135px";
         book.style.backgroundColor = `rgb(${[r,g,b].join(',')})`;
-        book.style.boxShadow = "0 0 0 2px black";
         shelfThree.appendChild(book);
-        bookCounter++;
-        return;
     }
     else if(bookCounter >= 30 && bookCounter < 40) {
-        book.classList.add("book");
-        book.style.width = "30px";
-        book.style.height = "135px";
         book.style.backgroundColor = `rgb(${[r,g,b].join(',')})`;
-        book.style.boxShadow = "0 0 0 2px black";
         shelfFour.appendChild(book);
-        bookCounter++;
-        return;
     }
     else {
-        book.classList.add("book");
-        book.style.width = "30px";
-        book.style.height = "135px";
         book.style.backgroundColor = `rgb(${[r,g,b].join(',')})`;
-        book.style.boxShadow = "0 0 0 2px black";
         shelfOne.appendChild(book);
-        bookCounter++;
-        return;
+
     }
+    bookCounter++;
 }
 
 function getRandomInt(max) {
@@ -87,14 +68,3 @@ function getRandomInt(max) {
 
 displayBook(myLibrary[0]);
 displayBook(myLibrary[1]);
-displayBook(myLibrary[2]);
-displayBook(myLibrary[3]);
-displayBook(myLibrary[4]);
-displayBook(myLibrary[5]);
-displayBook(myLibrary[6]);
-displayBook(myLibrary[7]);
-displayBook(myLibrary[8]);
-displayBook(myLibrary[9]);
-displayBook(myLibrary[10]);
-
-

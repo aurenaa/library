@@ -45,3 +45,30 @@
         0 0 0 2px black; 
     display: flex;
 }
+
+.book {
+    width: 30px;
+    height: 135px;
+    box-shadow: 0 0 0 2px black;
+    position: relative;
+}
+
+.book::after {
+    content: attr(data-info);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.book:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
