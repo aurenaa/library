@@ -30,6 +30,7 @@ function displayBook(newBook) {
     let book = document.createElement("div");
     book.setAttribute('data-info', newBook.info());
     book.classList.add("book");
+    book.dataset.id = newBook.id;
 
     let r = getRandomInt(255);
     let g = getRandomInt(255);
@@ -57,6 +58,10 @@ function displayBook(newBook) {
 
     }
     bookCounter++;
+
+    book.addEventListener("click", () => {
+        removeButton(book, newBook.id);
+    });
 }
 
 function getRandomInt(max) {
@@ -95,3 +100,16 @@ form.addEventListener("submit", (e) => {
 
     dialog.close();
 });
+
+let buttonMade = false;
+const buttons = document.querySelector(".buttons");
+function removeButton(book, bookId) {
+    if (buttonMade) {
+        return;
+    }
+    let removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.classList.add("remove-button");
+    buttons.appendChild(removeBtn);
+    buttonMade = true;
+}

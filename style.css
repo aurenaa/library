@@ -93,6 +93,11 @@
     cursor: pointer;
 }
 
+.add-button:hover {
+    background-color: rgb(1, 157, 224);
+    border: rgb(1, 157, 224) solid;
+}
+
 form {
     max-width: 400px;
     margin: 0 auto;
@@ -105,5 +110,28 @@ input {
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.remove-button {
+    width: 130px;
+    height: 65px;
+    background-color: rgb(0, 179, 255);
+    border: rgb(0, 179, 255) solid;
+    border-radius: 30px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    background-color: rgb(1, 157, 224);
+    border: rgb(1, 157, 224) solid;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
