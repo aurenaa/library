@@ -17,9 +17,6 @@ function addBookToLibrary(title, author, pageNum, read) {
     myLibrary.push(book);
 }
 
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 295, "not read");
-addBookToLibrary("The Last of Us", "Neil Druckman", 2, "not read");
-
 const shelfOne = document.querySelector(".bookshelf-shelf_one");
 const shelfTwo = document.querySelector(".bookshelf-shelf_two");
 const shelfThree = document.querySelector(".bookshelf-shelf_three");
@@ -61,16 +58,15 @@ function displayBook(newBook) {
 
     book.addEventListener("click", () => {
         removeButton(book, newBook.id);
-        readButton(book, newBook.id);
+        if (newBook.read != "read") {
+            readButton(book, newBook.id);
+        }
     });
 }
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
-
-displayBook(myLibrary[0]);
-displayBook(myLibrary[1]);
 
 const addBtn = document.getElementById("add-button");
 const dialog = document.getElementById("dialog");
@@ -108,12 +104,12 @@ function getBookById(id) {
 
 let buttonRemove = false;
 const buttons = document.querySelector(".buttons");
+let removeBtn = document.createElement("button");
 function removeButton(book, bookId) {
     if (buttonRemove) {
         return;
     }
 
-    let removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove";
     removeBtn.classList.add("remove-button");
     buttons.appendChild(removeBtn);
@@ -121,19 +117,22 @@ function removeButton(book, bookId) {
 
     removeBtn.addEventListener("click", () => {
         book.remove();
-        console.log("remove clicked");
         buttons.removeChild(removeBtn);
         buttonRemove = false;
+        bookCounter--;
+        if (bookCounter == 0) {
+            buttons.removeChild(readBtn);
+        }
     });
 }
 
 let buttonRead = false;
+let readBtn = document.createElement("button");
 function readButton(book, bookId) {
     if (buttonRead) {
         return;
     }
 
-    let readBtn = document.createElement("button");
     readBtn.textContent = "Status";
     readBtn.classList.add("read-button");
     buttons.appendChild(readBtn);
@@ -143,11 +142,9 @@ function readButton(book, bookId) {
         const bookToUpdate = getBookById(bookId);
         if (bookToUpdate) {
             bookToUpdate.read = "read";
-            displayBook(bookToUpdate);
+            book.setAttribute('data-info', bookToUpdate.info());
+            buttons.removeChild(readBtn);
+            buttonRead = false;
         }
     });
-}
-
-function refreshDisplay(updatedBook) {
-
 }
