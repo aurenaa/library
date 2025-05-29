@@ -61,6 +61,7 @@ function displayBook(newBook) {
 
     book.addEventListener("click", () => {
         removeButton(book, newBook.id);
+        readButton(book, newBook.id);
     });
 }
 
@@ -101,15 +102,52 @@ form.addEventListener("submit", (e) => {
     dialog.close();
 });
 
-let buttonMade = false;
+function getBookById(id) {
+    return myLibrary.find(book => book.id == id);
+}
+
+let buttonRemove = false;
 const buttons = document.querySelector(".buttons");
 function removeButton(book, bookId) {
-    if (buttonMade) {
+    if (buttonRemove) {
         return;
     }
+
     let removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove";
     removeBtn.classList.add("remove-button");
     buttons.appendChild(removeBtn);
-    buttonMade = true;
+    buttonRemove = true;
+
+    removeBtn.addEventListener("click", () => {
+        book.remove();
+        console.log("remove clicked");
+        buttons.removeChild(removeBtn);
+        buttonRemove = false;
+    });
+}
+
+let buttonRead = false;
+function readButton(book, bookId) {
+    if (buttonRead) {
+        return;
+    }
+
+    let readBtn = document.createElement("button");
+    readBtn.textContent = "Status";
+    readBtn.classList.add("read-button");
+    buttons.appendChild(readBtn);
+    buttonRead = true;
+
+    readBtn.addEventListener("click", () => {
+        const bookToUpdate = getBookById(bookId);
+        if (bookToUpdate) {
+            bookToUpdate.read = "read";
+            displayBook(bookToUpdate);
+        }
+    });
+}
+
+function refreshDisplay(updatedBook) {
+
 }
